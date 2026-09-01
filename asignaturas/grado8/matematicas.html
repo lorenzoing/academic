@@ -5,168 +5,574 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matemáticas 8° - Exámenes 2026</title>
     <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        /* =========================================================
+           ENCABEZADO DE LA ASIGNATURA — COLUMNA IZQUIERDA
+           ========================================================= */
+
+        .subject-intro {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .subject-intro .badge {
+            background: var(--bg-light);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .subject-intro h1 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            margin: 14px 0 8px;
+            border: none;
+            padding: 0;
+        }
+
+        .subject-intro p {
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           TEMARIO
+           ========================================================= */
+
+        .subject-menu {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .subject-menu h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================================================
+           IMÁGENES DE LAS GUÍAS
+           ========================================================= */
+
+        .topic-visual {
+            margin: 22px 0 26px;
+            text-align: center;
+        }
+
+        .topic-visual img.study-image {
+            display: block;
+            width: 100%;
+            max-width: 950px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            cursor: zoom-in;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .topic-visual img.study-image:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .image-hint {
+            display: block;
+            margin-top: 8px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+
+        /* =========================================================
+           VISOR DE IMÁGENES EN PANTALLA COMPLETA
+           ========================================================= */
+
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            background: rgba(7, 25, 43, 0.94);
+        }
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+        .image-lightbox img {
+            display: block;
+
+            max-width: 96vw;
+            max-height: 92vh;
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+
+            border-radius: 6px;
+
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.35);
+
+            cursor: zoom-out;
+        }
+
+        .lightbox-close {
+            position: fixed;
+
+            top: 18px;
+            right: 22px;
+
+            width: 42px;
+            height: 42px;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.14);
+
+            color: white;
+
+            font-size: 28px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .subject-intro,
+            .subject-menu {
+                padding: 18px;
+            }
+
+            .image-lightbox {
+                padding: 12px;
+            }
+
+            .image-lightbox img {
+                max-width: 98vw;
+                max-height: 90vh;
+            }
+        }
+    </style>
 </head>
+
+
 <body>
+
+    <!-- =========================================================
+         NAVEGACIÓN
+         ========================================================= -->
+
     <nav class="navbar">
+
         <div class="navbar-left">
-            <a href="javascript:history.back()" class="back-btn">← Atrás</a>
+
+            <a href="javascript:history.back()" class="back-btn">
+                ← Atrás
+            </a>
+
             <div class="breadcrumb">
-                <a href="../../index.html"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Inicio</a>
-                <span>></span> <a href="../../grados/grado8.html">Grado 8°</a> <span>></span> <span>Matemáticas</span>
+
+                <a href="../../index.html">
+
+                    <svg
+                        width="18"
+                        height="18"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true">
+
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+
+                    </svg>
+
+                    Inicio
+
+                </a>
+
+                <span>></span>
+
+                <a href="../../grados/grado8.html">
+                    Grado 8°
+                </a>
+
+                <span>></span>
+
+                <span>Matemáticas</span>
+
             </div>
+
         </div>
-        <a href="../../index.html" class="home-btn">Volver al inicio</a>
+
+
+        <a href="../../index.html" class="home-btn">
+            Volver al inicio
+        </a>
+
     </nav>
-    
+
+
+    <!-- =========================================================
+         ESTRUCTURA PRINCIPAL
+         ========================================================= -->
+
     <div class="dashboard-layout">
+
+
+        <!-- =====================================================
+             COLUMNA IZQUIERDA
+             ===================================================== -->
+
         <aside class="sidebar">
-            <h3>Temario del Examen</h3>
-            <ul class="subject-topics">
-                <li>Fracciones algebraicas</li><li>Operaciones con fracciones algebraicas</li><li>Expresiones radicales.</li><li>Simplificación y operaciones.</li>
-            </ul>
+
+
+            <!-- INFORMACIÓN DE LA ASIGNATURA -->
+
+            <div class="subject-intro">
+
+                <span class="badge">
+                    Grado 8°
+                </span>
+
+                <h1>
+                    Matemáticas
+                </h1>
+
+                <p>
+                    Guía de preparación para la evaluación del tercer periodo.
+                </p>
+
+            </div>
+
+
+            <!-- TEMARIO -->
+
+            <div class="subject-menu">
+
+                <h3>
+                    Temario del Examen
+                </h3>
+
+                <ul class="subject-topics">
+
+                    <li>
+                        Fracciones algebraicas
+                    </li>
+
+                    <li>
+                        Operaciones con fracciones algebraicas
+                    </li>
+
+                    <li>
+                        Expresiones radicales
+                    </li>
+
+                    <li>
+                        Simplificación y operaciones
+                    </li>
+
+                </ul>
+
+            </div>
+
         </aside>
-        
-        <main class="main-content" style="background: transparent; box-shadow: none; border: none; padding: 0;">
-            <div class="content-header" style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
-                <span class="badge">Grado 8°</span>
-                <h1 style="border:none; margin-bottom:0;">📘 Matemáticas</h1>
-                <p style="color: var(--text-muted); margin-top: 10px;">Guía de preparación estructurada para las evaluaciones del tercer periodo.</p>
-            </div>
-            
-            <!-- CONTENIDO DE ESTUDIO PARA EL ALUMNO -->
+
+
+        <!-- =====================================================
+             COLUMNA DERECHA
+             ===================================================== -->
+
+        <main
+            class="main-content"
+            style="background: transparent; box-shadow: none; border: none; padding: 0;">
+
             <section class="study-content">
-                
-            <div class="topic-card">
-                <h2 class="topic-title">
-                    <span class="topic-badge-num">1</span> 
-                    Fracciones algebraicas
-                </h2>
-                
-                <div class="section-guide concept">
-                    <h3>📚 Concepto Fundamental</h3>
-                    <p>Una fracción algebraica es similar a una fracción numérica, pero incluye expresiones con variables (letras). Operar con ellas requiere dominar la factorización.</p>
-                </div>
-                
-                <div class="section-guide example">
-                    <h3>💡 Ejemplo Analítico</h3>
-                    <p>Veamos la estructura para resolver este tipo de planteamientos paso a paso:</p>
-                    <div class="example-box">
-                        <p>Paso 1: Factorizar completamente tanto el numerador como el denominador.</p><p>Paso 2: Simplificar cancelando los factores idénticos arriba y abajo.</p><p>Paso 3: Realizar la operación final manteniendo el orden algebraico.</p>
+
+
+                <!-- =================================================
+                     TEMA 1
+                     ================================================= -->
+
+                <div class="topic-card">
+
+                    <h2 class="topic-title">
+
+                        <span class="topic-badge-num">
+                            1
+                        </span>
+
+                        Fracciones algebraicas
+
+                    </h2>
+
+
+                    <div class="topic-visual">
+
+                        <!--
+                            CAMBIAR SOLO EL NOMBRE DEL ARCHIVO
+                            La imagen debe contener concepto,
+                            ejemplos y ejercicios.
+                        -->
+
+                        <img
+                            src="../../recursos/grado8/imagen_matematicas_8_1.png"
+                            alt="Fracciones algebraicas"
+                            class="study-image">
+
+                        <span class="image-hint">
+                            Haz clic en la imagen para verla en pantalla completa.
+                        </span>
+
+                        <p class="topic-description">
+                            Material visual del tema con conceptos, ejemplos y ejercicios de aplicación.
+                        </p>
+
                     </div>
+
                 </div>
-                
-                <div class="section-guide practice">
-                    <h3>✍️ Ejercicios de Aplicación</h3>
-                    <p>Resuelve de manera ordenada en tu libreta de apuntes, justificando tu procedimiento:</p>
-                    <div class="exercise-box">
-                        <ol style="margin-top:0;">
-                            <li>Aplica los casos de factorización pertinentes para simplificar la expresión dada en clase.</li><li>Halla el común denominador y ejecuta la suma de las fracciones algebraicas propuestas.</li>
-                        </ol>
+
+
+                <!-- =================================================
+                     TEMA 2
+                     ================================================= -->
+
+                <div class="topic-card">
+
+                    <h2 class="topic-title">
+
+                        <span class="topic-badge-num">
+                            2
+                        </span>
+
+                        Operaciones con fracciones algebraicas
+
+                    </h2>
+
+
+                    <div class="topic-visual">
+
+                        <!-- CAMBIAR SOLO EL NOMBRE DEL ARCHIVO -->
+
+                        <img
+                            src="../../recursos/grado8/imagen_matematicas_8_2.png"
+                            alt="Operaciones con fracciones algebraicas"
+                            class="study-image">
+
+                        <span class="image-hint">
+                            Haz clic en la imagen para verla en pantalla completa.
+                        </span>
+
+                        <p class="topic-description">
+                            Material visual del tema con conceptos, ejemplos y ejercicios de aplicación.
+                        </p>
+
                     </div>
+
                 </div>
-            </div>
-            
-            <div class="topic-card">
-                <h2 class="topic-title">
-                    <span class="topic-badge-num">2</span> 
-                    Operaciones con fracciones algebraicas
-                </h2>
-                
-                <div class="section-guide concept">
-                    <h3>📚 Concepto Fundamental</h3>
-                    <p>Una fracción algebraica es similar a una fracción numérica, pero incluye expresiones con variables (letras). Operar con ellas requiere dominar la factorización.</p>
-                </div>
-                
-                <div class="section-guide example">
-                    <h3>💡 Ejemplo Analítico</h3>
-                    <p>Veamos la estructura para resolver este tipo de planteamientos paso a paso:</p>
-                    <div class="example-box">
-                        <p>Paso 1: Factorizar completamente tanto el numerador como el denominador.</p><p>Paso 2: Simplificar cancelando los factores idénticos arriba y abajo.</p><p>Paso 3: Realizar la operación final manteniendo el orden algebraico.</p>
+
+
+                <!-- =================================================
+                     TEMA 3
+                     ================================================= -->
+
+                <div class="topic-card">
+
+                    <h2 class="topic-title">
+
+                        <span class="topic-badge-num">
+                            3
+                        </span>
+
+                        Expresiones radicales
+
+                    </h2>
+
+
+                    <div class="topic-visual">
+
+                        <!-- CAMBIAR SOLO EL NOMBRE DEL ARCHIVO -->
+
+                        <img
+                            src="../../recursos/grado8/imagen_matematicas_8_3.png"
+                            alt="Expresiones radicales"
+                            class="study-image">
+
+                        <span class="image-hint">
+                            Haz clic en la imagen para verla en pantalla completa.
+                        </span>
+
+                        <p class="topic-description">
+                            Material visual del tema con conceptos, ejemplos y ejercicios de aplicación.
+                        </p>
+
                     </div>
+
                 </div>
-                
-                <div class="section-guide practice">
-                    <h3>✍️ Ejercicios de Aplicación</h3>
-                    <p>Resuelve de manera ordenada en tu libreta de apuntes, justificando tu procedimiento:</p>
-                    <div class="exercise-box">
-                        <ol style="margin-top:0;">
-                            <li>Aplica los casos de factorización pertinentes para simplificar la expresión dada en clase.</li><li>Halla el común denominador y ejecuta la suma de las fracciones algebraicas propuestas.</li>
-                        </ol>
+
+
+                <!-- =================================================
+                     TEMA 4
+                     ================================================= -->
+
+                <div class="topic-card">
+
+                    <h2 class="topic-title">
+
+                        <span class="topic-badge-num">
+                            4
+                        </span>
+
+                        Simplificación y operaciones
+
+                    </h2>
+
+
+                    <div class="topic-visual">
+
+                        <!-- CAMBIAR SOLO EL NOMBRE DEL ARCHIVO -->
+
+                        <img
+                            src="../../recursos/grado8/imagen_matematicas_8_4.png"
+                            alt="Simplificación y operaciones"
+                            class="study-image">
+
+                        <span class="image-hint">
+                            Haz clic en la imagen para verla en pantalla completa.
+                        </span>
+
+                        <p class="topic-description">
+                            Material visual del tema con conceptos, ejemplos y ejercicios de aplicación.
+                        </p>
+
                     </div>
+
                 </div>
-            </div>
-            
-            <div class="topic-card">
-                <h2 class="topic-title">
-                    <span class="topic-badge-num">3</span> 
-                    Expresiones radicales.
-                </h2>
-                
-                <div class="section-guide concept">
-                    <h3>📚 Concepto Fundamental</h3>
-                    <p>En este apartado nos enfocaremos en <strong>expresiones radicales</strong>. Comprender cómo funciona te ayudará a resolver problemas de manera estructurada.</p>
-                </div>
-                
-                <div class="section-guide example">
-                    <h3>💡 Ejemplo Analítico</h3>
-                    <p>Veamos la estructura para resolver este tipo de planteamientos paso a paso:</p>
-                    <div class="example-box">
-                        <p>Paso 1: Extrae la información clave y define qué te están pidiendo.</p><p>Paso 2: Aplica la regla, fórmula o propiedad correspondiente.</p><p>Paso 3: Verifica que el resultado tenga sentido matemático dentro del contexto.</p>
-                    </div>
-                </div>
-                
-                <div class="section-guide practice">
-                    <h3>✍️ Ejercicios de Aplicación</h3>
-                    <p>Resuelve de manera ordenada en tu libreta de apuntes, justificando tu procedimiento:</p>
-                    <div class="exercise-box">
-                        <ol style="margin-top:0;">
-                            <li>Analiza y resuelve un ejercicio práctico relacionado con expresiones radicales.</li><li>Asegúrate de mostrar claramente todo el procedimiento en tu cuaderno.</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="topic-card">
-                <h2 class="topic-title">
-                    <span class="topic-badge-num">4</span> 
-                    Simplificación y operaciones.
-                </h2>
-                
-                <div class="section-guide concept">
-                    <h3>📚 Concepto Fundamental</h3>
-                    <p>En este apartado nos enfocaremos en <strong>simplificación y operaciones</strong>. Comprender cómo funciona te ayudará a resolver problemas de manera estructurada.</p>
-                </div>
-                
-                <div class="section-guide example">
-                    <h3>💡 Ejemplo Analítico</h3>
-                    <p>Veamos la estructura para resolver este tipo de planteamientos paso a paso:</p>
-                    <div class="example-box">
-                        <p>Paso 1: Extrae la información clave y define qué te están pidiendo.</p><p>Paso 2: Aplica la regla, fórmula o propiedad correspondiente.</p><p>Paso 3: Verifica que el resultado tenga sentido matemático dentro del contexto.</p>
-                    </div>
-                </div>
-                
-                <div class="section-guide practice">
-                    <h3>✍️ Ejercicios de Aplicación</h3>
-                    <p>Resuelve de manera ordenada en tu libreta de apuntes, justificando tu procedimiento:</p>
-                    <div class="exercise-box">
-                        <ol style="margin-top:0;">
-                            <li>Analiza y resuelve un ejercicio práctico relacionado con simplificación y operaciones.</li><li>Asegúrate de mostrar claramente todo el procedimiento en tu cuaderno.</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            
+
+
             </section>
 
-            <section style="background: white; border-radius: 12px; padding: 25px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px;">📚 Documentos de Apoyo Adicional</h3>
+
+            <!-- =====================================================
+                 RECURSOS ADICIONALES
+                 ===================================================== -->
+
+            <section
+                style="
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px;
+                    box-shadow: var(--shadow-sm);
+                    border: 1px solid #e2e8f0;
+                ">
+
+                <h3
+                    style="
+                        color: var(--primary-color);
+                        margin-bottom: 15px;
+                    ">
+
+                    Documentos de Apoyo Adicional
+
+                </h3>
+
+
                 <div class="resources-list">
-                    <a href="../../recursos/grado8/guia_matematicas.txt" target="_blank">📄 Guía de estudio de Matemáticas (PDF)</a>
-                    <a href="../../recursos/grado8/taller_matematicas.txt" target="_blank">📄 Taller preparatorio oficial</a>
+
+                    <a
+                        href="../../recursos/grado8/guia_matematicas.txt"
+                        target="_blank">
+
+                        📄 Guía de estudio de Matemáticas
+
+                    </a>
+
+
+                    <a
+                        href="../../recursos/grado8/taller_matematicas.txt"
+                        target="_blank">
+
+                        📄 Taller preparatorio oficial
+
+                    </a>
+
                 </div>
+
             </section>
+
         </main>
+
     </div>
+
+
+    <!-- =========================================================
+         VISOR DE IMÁGENES
+         ========================================================= -->
+
+    <div
+        id="imageLightbox"
+        class="image-lightbox"
+        aria-hidden="true">
+
+        <button
+            id="lightboxClose"
+            class="lightbox-close"
+            type="button"
+            aria-label="Cerrar imagen">
+
+            ×
+
+        </button>
+
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="">
+
+    </div>
+
+
+    <!-- SCRIPT COMÚN DEL PROYECTO -->
+
     <script src="../../script.js"></script>
+
 </body>
 </html>
