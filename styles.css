@@ -84,6 +84,202 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .example-box { background: white; border: 1px dashed #cbd5e1; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.95rem; margin-top: 12px; color: var(--text-main); }
 .exercise-box { background: white; border: 1px solid #fca5a5; padding: 15px; border-radius: 6px; margin-top: 12px; }
 
+/* =========================================================
+   GUÍA DE ESTUDIO
+   Encabezado de asignatura en la columna izquierda
+   ========================================================= */
+
+.subject-intro {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+}
+
+.subject-intro .badge {
+    background: var(--bg-light);
+    color: var(--secondary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.subject-intro h1 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin: 14px 0 8px;
+}
+
+.subject-intro p {
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TEMARIO
+   ========================================================= */
+
+.subject-menu {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+}
+
+.subject-menu h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   IMÁGENES DE LAS GUÍAS
+   ========================================================= */
+
+.topic-visual {
+    margin: 22px 0 26px;
+    text-align: center;
+}
+
+.topic-visual img.study-image {
+    display: block;
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    cursor: zoom-in;
+    transition: box-shadow 0.2s ease;
+}
+
+.topic-visual img.study-image:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.image-hint {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.topic-description {
+    margin: 12px auto 0;
+    max-width: 900px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+
+/* =========================================================
+   VISOR DE IMAGEN EN PANTALLA COMPLETA
+   ========================================================= */
+
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(7, 25, 43, 0.94);
+}
+
+.image-lightbox.active {
+    display: flex;
+}
+
+.image-lightbox img {
+    display: block;
+
+    max-width: 96vw;
+    max-height: 92vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+
+    box-shadow: 0 12px 45px rgba(0, 0, 0, 0.35);
+
+    cursor: zoom-out;
+}
+
+.lightbox-close {
+    position: fixed;
+
+    top: 18px;
+    right: 22px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    color: white;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .subject-intro,
+    .subject-menu {
+        padding: 18px;
+    }
+
+    .image-lightbox {
+        padding: 12px;
+    }
+
+    .image-lightbox img {
+        max-width: 98vw;
+        max-height: 90vh;
+    }
+}
+
 .resources-list a { display: flex; align-items: center; gap: 10px; padding: 12px 15px; background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 8px; color: var(--text-main); text-decoration: none; margin-bottom: 10px; transition: var(--transition); }
 .resources-list a:hover { background: #e2e8f0; border-color: #cbd5e1; }
 @media (max-width: 900px) { .dashboard-layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
