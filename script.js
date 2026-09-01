@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
        FECHAS DE EXÁMENES
        ========================================================= */
 
-    const dateElements = document.querySelectorAll('.exam-date');
+    const dateElements = document.querySelectorAll(".exam-date");
 
     dateElements.forEach(el => {
 
-        const dateString = el.getAttribute('data-date');
+        const dateString = el.getAttribute("data-date");
 
         if (!dateString || dateString.trim() === "") {
             el.innerHTML = "⏳ Fecha pendiente";
@@ -34,17 +34,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
             const options = {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
+                day: "numeric",
+                month: "long",
+                year: "numeric"
             };
 
             const formattedDate =
-                targetDate.toLocaleDateString('es-ES', options);
+                targetDate.toLocaleDateString("es-ES", options);
 
             el.innerHTML =
                 `📅 ${formattedDate} <br> ⏳ Faltan <strong>${diffDays}</strong> días`;
         }
+
     });
 
 
@@ -52,115 +53,108 @@ document.addEventListener("DOMContentLoaded", () => {
        VISOR DE IMÁGENES
        ========================================================= */
 
-    const lightbox = document.getElementById('imageLightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-
-    /*
-       Abrir imagen
-
-       Se utiliza desde el HTML así:
-
-       onclick="openImage(this)"
-    */
-
-    window.openImage = function(image) {
-
-        if (!lightbox || !lightboxImage) {
-            console.error("No se encontró el visor de imágenes.");
-            return;
-        }
-
-        lightboxImage.src = image.src;
-        lightboxImage.alt = image.alt || "Imagen ampliada";
-
-        lightbox.classList.add('active');
-
-        lightbox.setAttribute(
-            'aria-hidden',
-            'false'
-        );
-
-        document.body.classList.add('lightbox-open');
-    };
-
+    const lightbox = document.getElementById("imageLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
 
     /*
-       Cerrar visor
+       Si esta página no tiene visor, no hacemos nada.
+       Esto permite que el mismo script.js funcione
+       también en index.html y otras páginas.
     */
 
-    function closeImage() {
-
-        if (!lightbox || !lightboxImage) {
-            return;
-        }
-
-        lightbox.classList.remove('active');
-
-        lightbox.setAttribute(
-            'aria-hidden',
-            'true'
-        );
-
-        document.body.classList.remove('lightbox-open');
-
-        lightboxImage.src = '';
+    if (!lightbox || !lightboxImage) {
+        return;
     }
 
 
-    /*
-       Cerrar haciendo clic sobre el fondo oscuro
-    */
+    /* ---------------------------------------------------------
+       ABRIR IMAGEN
+       --------------------------------------------------------- */
 
-    if (lightbox) {
+    const studyImages = document.querySelectorAll(".study-image");
 
-        lightbox.addEventListener('click', function(event) {
+    studyImages.forEach(image => {
 
-            if (event.target === lightbox) {
-                closeImage();
-            }
+        image.addEventListener("click", () => {
+
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt || "Imagen ampliada";
+
+            lightbox.classList.add("active");
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add("lightbox-open");
 
         });
+
+    });
+
+
+    /* ---------------------------------------------------------
+       CERRAR IMAGEN
+       --------------------------------------------------------- */
+
+    function closeLightbox() {
+
+        lightbox.classList.remove("active");
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.classList.remove("lightbox-open");
+
+        lightboxImage.src = "";
+
     }
 
 
-    /*
-       Botón X
-    */
+    /* Cerrar con botón X */
 
     if (lightboxClose) {
 
         lightboxClose.addEventListener(
-            'click',
-            closeImage
+            "click",
+            closeLightbox
         );
 
     }
 
 
-    /*
-       Cerrar haciendo clic sobre la imagen ampliada
-    */
+    /* Cerrar haciendo clic en el fondo */
 
-    if (lightboxImage) {
+    lightbox.addEventListener("click", event => {
 
-        lightboxImage.addEventListener(
-            'click',
-            closeImage
-        );
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
 
-    }
+    });
 
 
-    /*
-       Cerrar con la tecla ESC
-    */
+    /* Cerrar haciendo clic en la imagen ampliada */
 
-    document.addEventListener('keydown', function(event) {
+    lightboxImage.addEventListener(
+        "click",
+        closeLightbox
+    );
 
-        if (event.key === 'Escape') {
-            closeImage();
+
+    /* Cerrar con ESC */
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            lightbox.classList.contains("active")
+        ) {
+            closeLightbox();
         }
 
     });
