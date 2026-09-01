@@ -185,13 +185,23 @@
 <div class="dashboard-layout">
 
     <aside class="sidebar">
-        <h3>Temario del Examen</h3>
+        <div class="subject-intro">
+            <span class="badge">Grado 6°</span>
+            <h1>Matemáticas</h1>
+            <p>
+                Guía de preparación para la evaluación del tercer periodo.
+            </p>
+        </div>
+
+        <div class="subject-menu">
+            <h3>Temario del Examen</h3>
         <ul class="subject-topics">
             <li>Fracciones y números decimales.</li>
             <li>Comparación de números decimales.</li>
             <li>Aproximación de números decimales.</li>
             <li>Operación con números decimales.</li>
         </ul>
+        </div>
     </aside>
 
     <main class="main-content" style="background: transparent; box-shadow: none; border: none; padding: 0;">
@@ -207,7 +217,9 @@
                 <div class="topic-visual">
                     <!-- CAMBIAR EL NOMBRE DEL ARCHIVO -->
                     <img src="../../recursos/grado6/imagen_matematicas_6_1.png"
-                         alt="Material de estudio sobre fracciones y números decimales">
+                         alt="Material de estudio sobre fracciones y números decimales class="study-image" onclick="openImage(this)" title="Haz clic para ampliar">
+
+                    <span class="image-hint">Haz clic en la imagen para verla en pantalla completa.</span>
 
                     <p class="topic-description">
                         Material visual del tema con conceptos fundamentales, ejemplos
@@ -225,7 +237,9 @@
                 <div class="topic-visual">
                     <!-- CAMBIAR EL NOMBRE DEL ARCHIVO -->
                     <img src="../../recursos/grado6/imagen_matematicas_6_2.png"
-                         alt="Material de estudio sobre comparación de números decimales">
+                         alt="Material de estudio sobre comparación de números decimales class="study-image" onclick="openImage(this)" title="Haz clic para ampliar">
+
+                    <span class="image-hint">Haz clic en la imagen para verla en pantalla completa.</span>
 
                     <p class="topic-description">
                         Material visual del tema con conceptos fundamentales, ejemplos
@@ -243,7 +257,9 @@
                 <div class="topic-visual">
                     <!-- CAMBIAR EL NOMBRE DEL ARCHIVO -->
                     <img src="../../recursos/grado6/imagen_matematicas_6_3.png"
-                         alt="Material de estudio sobre aproximación de números decimales">
+                         alt="Material de estudio sobre aproximación de números decimales class="study-image" onclick="openImage(this)" title="Haz clic para ampliar">
+
+                    <span class="image-hint">Haz clic en la imagen para verla en pantalla completa.</span>
 
                     <p class="topic-description">
                         Material visual del tema con conceptos fundamentales, ejemplos
@@ -261,7 +277,9 @@
                 <div class="topic-visual">
                     <!-- CAMBIAR EL NOMBRE DEL ARCHIVO -->
                     <img src="../../recursos/grado6/imagen_matematicas_6_4.png"
-                         alt="Material de estudio sobre operaciones con números decimales">
+                         alt="Material de estudio sobre operaciones con números decimales class="study-image" onclick="openImage(this)" title="Haz clic para ampliar">
+
+                    <span class="image-hint">Haz clic en la imagen para verla en pantalla completa.</span>
 
                     <p class="topic-description">
                         Material visual del tema con conceptos fundamentales, ejemplos
@@ -290,6 +308,13 @@
     </main>
 </div>
 
-<script src="../../script.js"></script>
+    <!-- VISOR DE IMÁGENES -->
+    <div id="imageLightbox" class="image-lightbox" aria-hidden="true">
+        <button id="lightboxClose" class="lightbox-close" type="button"
+                aria-label="Cerrar imagen">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+<script src="../../script_actualizado.js"></script>
 </body>
 </html>
